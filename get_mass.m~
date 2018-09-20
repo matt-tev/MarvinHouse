@@ -1,0 +1,7 @@
+%get_mass
+function m = get_mass(rover)
+    if  && isstruct(rover)
+    else error('stru
+    end
+    
+end
