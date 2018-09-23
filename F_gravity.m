@@ -1,5 +1,8 @@
-%F_gravity
 function Fgt = F_gravity(terrain_angle, rover, planet)
+    %   Function F_gravity takes input1 terrain_angle(vector), input2
+    %   rover(struct), and input3 planet(struct) and outputs Fgt which is
+    %   the force due to gravity acting on the rover
+
     if nargin ~= 3
         error('There must be two input arguments.');
     elseif ~isvector(omega)
@@ -11,6 +14,7 @@ function Fgt = F_gravity(terrain_angle, rover, planet)
     elseif ~isstruct(planet)
         error('Planet must be a struct.')
     else
+        %MAYBE NOT RIGHT
         Fgt = get_mass(rover)*-sind(terrain_angle)*planet.g;
         %positive/ uphilll should yield negative force
         % should be vectorized

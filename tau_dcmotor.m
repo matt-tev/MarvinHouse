@@ -1,6 +1,7 @@
-%tau_dcmotor
-
 function tau = tau_dcmotor(omega,motor)
+    %   Function tau_dcmotor takes input1 omega(vector) and input2 motor(struct)
+    %   and output tau which is the effective torque of the motor
+    
     if nargin ~= 2 
         error('There is not 2 inputs.');
     elseif ~isvector(omega)

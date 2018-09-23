@@ -1,5 +1,7 @@
-%F_drive
 function Fd = F_drive(omega, rover)
+    %   Function F_drive takes input omega(vector) and input rover(struct)
+    %   and outputs Fd, which is the driving force outputted from the rover
+
     if nargin ~= 2
         error('There must be two input arguments.');
     elseif ~isvector(omega)
@@ -7,11 +9,10 @@ function Fd = F_drive(omega, rover)
     elseif ~isstruct(rover)
         error('Rover must be a struct.')
     else
-        % function of motor shaft speed - prop o f motor, sr, and drive
-        % track
-        
+        %PROBABLY NOT RIGHT
+        tau = tau_dcmotor(omega,motor);
         %needs to be 'vectorized'
-        Fd = 1;
+        Fd = tau/wheel.radius;
     end
     
 end

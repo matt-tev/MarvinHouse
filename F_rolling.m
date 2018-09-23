@@ -1,5 +1,10 @@
-%F_rolling
 function Frr = F_rolling(omega, terrain_angle, rover, planet, Crr)
+    %   Function F_rolling takes input1 omega(vector),input2 terrain_angle
+    %   (vector), input3 rover(struct), input4 planet(struct), and input5
+    %   Crr(vector) and outputs Frr which is the rolling force exerted onto
+    %   the wheels
+
+
     if nargin ~= 5
         error('There must be 5 inputs.');
     elseif ~isvector(omega) || ~isvector(terrain_angle)
@@ -11,13 +16,12 @@ function Frr = F_rolling(omega, terrain_angle, rover, planet, Crr)
     elseif ~isvector(Crr) || Crr < 0
         error('The fifth input must be a positive scalar.');
     else
-        % MAY BE WRONG DIRECTION AND MULTIPLE OF 6 INCORRECT
-        %computes the rolling resistance summed over all six wheels. Assume that 1/6th the rover normal force
-        %acts on each wheel.
-        %IDK HOW TO FIND ROVER VELOCITY
+        % MAY BE WRONG DIRECTION AND OFF BY MULTIPLE OF 6
+        
         Fn = get_mass(rover)*planet.g*cosd(terrain_angle);
         Frr_simple = Crr*Fn;
-        Frr = erf(40*omega/get_gear_ratio(rover.speed_reducer))*Frr_simple;
+        v = wheel.radius*(omega/get_gear_ratio(rover.speed_reducer));
+        Frr = erf(40*v)*Frr_simple;
     end
         
 end
