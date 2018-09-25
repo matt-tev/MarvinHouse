@@ -10,7 +10,7 @@ function Ng = get_gear_ratio(speed_reducer)
         s1 = speed_reducer.type;
         s2 = 'reverted';
         if strcp(s1,s2)
-            %MAYBE NOT RIGHT
+            %Probably RIGHT
             Ng = (speed_reducer.diam_gear/speed_reducer.diam_pinion)^2;
         else
             error('The type field is not reverted.');
