@@ -2,8 +2,12 @@
 figure;
 title(graphs_motor);
 
-tau = tau_dcmotor(omega,motor);
+tauS = motor.torque_stall;
+tauNL = motor.torque_noload;
+wNL = motor.speed_noload;
 
+tau = tau_dcmotor(omega,motor);
+omega = wNL*(1-(tau-tauNL)/(tauS-tauNL));
 P = tau*omega;
 
 subplot(3,1,1)
