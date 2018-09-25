@@ -21,6 +21,7 @@ function Frr = F_rolling(omega, terrain_angle, rover, planet, Crr)
         Fn = get_mass(rover)*planet.g*cosd(terrain_angle);
         Frr_simple = Crr*Fn;
         v = wheel.radius*(omega/get_gear_ratio(rover.speed_reducer));
+        v = rover.wheel_assembly.wheel.radius*(omega/get_gear_ratio(rover.wheel_assembly.speed_reducer));
         Frr = erf(40*v)*Frr_simple;
     end
         
