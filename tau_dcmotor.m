@@ -3,7 +3,7 @@ function tau = tau_dcmotor(omega,motor)
     %   and output tau which is the effective torque of the motor
     wNL = motor.speed_noload;
     tauS = motor.torque_stall;
-    tauNL = 0;
+    tauNL = motor.torque_noload;
     if nargin ~= 2 
         error('There is not 2 inputs.');
     elseif ~isvector(omega)
