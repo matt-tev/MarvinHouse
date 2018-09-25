@@ -11,7 +11,7 @@ function tau = tau_dcmotor(omega,motor)
     elseif ~isstruct(motor)
         error('Motor is not a struct.');
     else
-        % PROBABLY WRONG
+        % PROBABLY RIGHT
         if omega > 0 && omega < wNL
             tau = tauS-((tauS-tauNL)/wNL)*omega;
         elseif omega < 0

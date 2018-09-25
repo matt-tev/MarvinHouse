@@ -12,7 +12,7 @@ function Fd = F_drive(omega, rover)
         %PROBABLY NOT RIGHT
         tau = tau_dcmotor(omega,motor);
         %needs to be 'vectorized'
-        Fd = tau/wheel.radius;
+        Fd = 6*(tau/wheel.radius);
     end
     
 end

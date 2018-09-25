@@ -5,8 +5,6 @@ function Fgt = F_gravity(terrain_angle, rover, planet)
 
     if nargin ~= 3
         error('There must be two input arguments.');
-    elseif ~isvector(omega)
-        error('Omega must be a scalar or vector.');
     elseif terrain_angle > 75 || terrain_angle < -75
         error('terrain_angle must be between -75 and +75 degrees.')
     elseif ~isstruct(rover)
