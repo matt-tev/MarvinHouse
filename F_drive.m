@@ -10,9 +10,9 @@ function Fd = F_drive(omega, rover)
         error('Rover must be a struct.')
     else
         %PROBABLY NOT RIGHT
-        tau = tau_dcmotor(omega,motor);
+        tau = tau_dcmotor(omega,rover.wheel_assembly.motor);
         %needs to be 'vectorized'
-        Fd = 6*(tau/wheel.radius);
+        Fd = 6*(tau./rover.wheel_assembly.wheel.radius);
     end
     
 end
