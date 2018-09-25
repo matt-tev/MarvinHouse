@@ -1,5 +1,7 @@
-Ng = get_gear_ratio(speed_reducer)
-Tout = get_
+Ng = get_gear_ratio(speed_reducer);
+tau = tau_dcmotor(omega,motor);
+tau_out = Ng*tau;
+omega = motor.speed_noload*(1-(tau - motor.torque_noload)/(motor.torque_stall - motor.torque_noload))
 
 subplot(3,1,1)
 %speed_speed_reducer vs torque_speed_reducer
