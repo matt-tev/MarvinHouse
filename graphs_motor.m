@@ -1,6 +1,6 @@
 %graphs_motor
 figure;
-title(graphs_motor);
+title('graphs_motor');
 
 tauS = motor.torque_stall;
 tauNL = motor.torque_noload;
