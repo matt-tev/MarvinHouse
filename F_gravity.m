@@ -4,8 +4,8 @@ function Fgt = F_gravity(terrain_angle, rover, planet)
     %   the force due to gravity acting on the rover
 
     if nargin ~= 3
-        error('There must be two input arguments.');
-    elseif any(terrain_angle) > 75 || any(terrain_angle) < -75
+        error('There must be three input arguments.');
+    elseif any(terrain_angle > 75) || any(terrain_angle < -75)
         error('All values of terrain_angle must be between -75 and +75 degrees.')
     elseif ~isstruct(rover)
         error('Rover must be a struct.')
