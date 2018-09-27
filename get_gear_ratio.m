@@ -13,7 +13,7 @@ function Ng = get_gear_ratio(speed_reducer)
             %Probably RIGHT
             Ng = (speed_reducer.diam_gear/speed_reducer.diam_pinion)^2;
         else
-            error('The field "type" inside struct "speed_reducer" is not "reverted".');
+            error('The field "type" inside struct "speed_reducer" is not a string equal to ''reverted''.');
         end
     end
 end
