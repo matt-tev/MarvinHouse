@@ -4,12 +4,12 @@ function F = F_net(omega,terrain_angle,rover,planet, Crr)
     %   Crr(vector) and outputs F which is the net force acting on the
     %   rover summed from the force of gravity (Fgt), the rolling force
     %   (Frr), and the force of the driving motors (Fd)
-
+    F = zeros(1,length(omega));
     if nargin ~= 5
         error('There must be 5 inputs.');
     elseif ~isvector(omega) || ~isvector(terrain_angle)
         error('The first two input arguments must be scalars or vectors');
-    elseif terrain_angle > 75 || terrain_angle < -75
+    elseif any(terrain_angle > 75) || any(terrain_angle < -75)
         error('The variable terrain_angle must be between the values of -75 degrees and 75 degrees.');
     elseif ~isstruct(rover) || ~isstruct(planet)
         error('The thrid and fourth input arguments must be structs.');
@@ -19,8 +19,8 @@ function F = F_net(omega,terrain_angle,rover,planet, Crr)
         %PROBABLY NOT RIGHT
         for i = 1:length(omega)
             F(i) = F_drive(omega(i),rover)+ ...
-                F_rolling(omega(i),terrain_angle,rover,planet,Crr) + ... 
-                    F_gravity(terrain_angle,rover,planet);
+                F_rolling(omega(i),terrain_angle(i),rover,planet,Crr) + ... 
+                    F_gravity(terrain_angle(i),rover,planet);
         end
     end
 end
