@@ -8,8 +8,8 @@ VMAX = zeros(size(CRR));
 N = size(CRR,1);
 for i=1:N
     for j=1:N
-        Crr = Crr_list(i,j);
-        slope = slope_list_deg(i,j);
+        Crr = CRR(i,j);
+        slope = SLOPE(i,j);
         VMAX(i,j) = wheel.radius*(omega/get_gear_ratio(rover.wheel_assembly.speed_reducer)); 
             
     end
