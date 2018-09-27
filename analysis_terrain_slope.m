@@ -9,6 +9,6 @@ fun = Vrover;
 x0 = motor.speed_noload;
 v_max = fzero(fun,x0);
 
-plot(v_max,slope_list_deg)
-xlabel('v_max')
-ylabel('slope_list_deg')
+plot(v_max,slope_list_deg);
+xlabel('v_max');
+ylabel('slope_list_deg');

@@ -17,8 +17,10 @@ function F = F_net(omega,terrain_angle,rover,planet, Crr)
         error('The fifth input must be a positive scalar.');
     else
         %PROBABLY NOT RIGHT
-        F = F_drive(oemga,rover)- ...
-             F_Rolling(omega,terrain_angle,rover,planet,Crr) - ... 
-                F_gravity(terrain_angle,rover,planet);
+        for i = 1:length(omega)
+            F(i) = F_drive(omega(i),rover)+ ...
+                F_rolling(omega(i),terrain_angle,rover,planet,Crr) + ... 
+                    F_gravity(terrain_angle,rover,planet);
+        end
     end
 end
