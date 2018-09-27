@@ -1,8 +1,6 @@
 % Calculate the values needed to tau)out and omega_out
 Ng = get_gear_ratio(speed_reducer);
-for i=1:length(omega)
-    tau = tau_dcmotor(omega,motor);
-end
+tau = tau_dcmotor(omega,motor);
 tau_out = Ng.*tau;
 omega_out = omega./Ng;
 power = tau_out.*omega_out;
