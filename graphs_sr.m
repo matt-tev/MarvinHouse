@@ -1,10 +1,11 @@
 % Calculate the values needed to tau)out and omega_out
 Ng = get_gear_ratio(speed_reducer);
-tau = tau_dcmotor(omega,motor);
-tau_out = Ng*tau;
-omega = motor.speed_noload*(1-(tau - motor.torque_noload)/(motor.torque_stall - motor.torque_noload));
-omega_out = omega/Ng;
-power = tau_out*omega_out;
+for i=1:length(omega)
+    tau = tau_dcmotor(omega,motor);
+end
+tau_out = Ng.*tau;
+omega_out = omega./Ng;
+power = tau_out.*omega_out;
 
 subplot(3,1,1)
 %speed_speed_reducer vs torque_speed_reducer
