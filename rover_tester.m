@@ -22,5 +22,5 @@ rover.chassis = chassis;
 rover.science_payload = science_payload;
 rover.power_subsys = power_subsys;
 
-omega = [0  0.5 1 2 4 -1];
+omega = linspace(0,3,100);
 terrain_angle = [10 20 30 45 -45 60];
