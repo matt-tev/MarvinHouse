@@ -7,5 +7,5 @@ x0 = motor.speed_noload;
 v_max = fzero(fun,x0);
 
 plot(v_max,Crr_list);
-xlabel('v_max');
+xlabel('v_max (m/s)');
 ylabel('Crr_list');
