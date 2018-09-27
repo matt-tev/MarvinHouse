@@ -10,9 +10,8 @@ for i=1:N
     for j=1:N
         Crr = CRR(i,j);
         slope = SLOPE(i,j);
-        VMAX(i,j) = wheel.radius*(omega/get_gear_ratio(rover.wheel_assembly.speed_reducer)); 
-            
+        VMAX(i,j) = wheel.radius*(omega/get_gear_ratio(rover.wheel_assembly.speed_reducer));     
     end
 end
-    
+   
 surf(CRR, SLOPE, VMAX);
