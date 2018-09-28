@@ -5,6 +5,7 @@ NG = get_gear_ratio(speed_reducer);
 radius = wheel.radius;
 Crr_list = linspace(0.01,0.4,25);
 slope_list_deg = linspace(-10,35,25);
+x0 = motor.speed_noload;
 [CRR,SLOPE] = meshgrid(Crr_list, slope_list_deg);
 VMAX = zeros(size(CRR));
 
