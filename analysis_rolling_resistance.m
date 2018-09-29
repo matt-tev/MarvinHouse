@@ -1,11 +1,12 @@
 % analysis_rolling_resistance
 
+NG = get_gear_ratio(speed_reducer);
+radius = wheel.radius;
 Crr_list = linspace(0.01,0.4,25);
-Vrover = wheel.radius*(omega/get_gear_ratio(rover.wheel_assembly.speed_reducer));
-fun = Vrover;
 x0 = motor.speed_noload;
-v_max = fzero(fun,x0);
-
+for i = 1:length(Crr_list)
+    v_max(i) = radius*fzero(@(omega)F_net(omega,terrain_angle,rover,planet,Crr_list(i)),x0)/NG;
+end
 plot(v_max,Crr_list);
-xlabel('v_max (m/s)');
-ylabel('Crr_list');
+xlabel('Velocity Max (m/s)');
+ylabel('Crr List');

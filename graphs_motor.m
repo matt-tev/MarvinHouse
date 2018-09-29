@@ -32,5 +32,4 @@ hold on
 plot(X_max,Pmax,'r*')
 xlabel('motor shaft speed [rad/s]');
 ylabel('motor power [W]');
-grid on
 hold off
