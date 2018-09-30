@@ -2,6 +2,7 @@ function Ng = get_gear_ratio(speed_reducer)
     %   Function get_gear_ratio takes input speed_reducer(struct)and
     %   outputs Ng which is the gear ratio between the gear and pinion
     
+    % error check
     if nargin ~= 1
         error('There is not 1 input.')
     elseif ~isstruct(speed_reducer)

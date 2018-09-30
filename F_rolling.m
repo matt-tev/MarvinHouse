@@ -4,6 +4,7 @@ function Frr = F_rolling(omega, terrain_angle, rover, planet, Crr)
     %   Crr(vector) and outputs Frr which is the rolling force exerted onto
     %   the wheels
     
+    % error check
     if nargin ~= 5
         error('There must be 5 inputs.');
     elseif (~isvector(omega) || ~isvector(terrain_angle)) || length(omega) ~= length(terrain_angle)
@@ -15,6 +16,8 @@ function Frr = F_rolling(omega, terrain_angle, rover, planet, Crr)
     elseif ~isvector(Crr) || Crr < 0
         error('The fifth input must be a positive scalar.');
     else
+        % these next lines tell the output function how many arguments to output
+        % in order to be the same length as the omega input
         Fn = zeros(1,length(terrain_angle));
         Frr_simple = zeros(1,length(terrain_angle));
         v = zeros(1,length(omega));

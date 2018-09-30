@@ -4,7 +4,12 @@ function F = F_net(omega,terrain_angle,rover,planet, Crr)
     %   Crr(vector) and outputs F which is the net force acting on the
     %   rover summed from the force of gravity (Fgt), the rolling force
     %   (Frr), and the force of the driving motors (Fd)
+    
+    % this next line tells the output function how many arguments to output
+    % in order to be the same length as the omega input
     F = zeros(1,length(omega));
+    
+    % error check
     if nargin ~= 5
         error('There must be 5 inputs.');
     elseif ~isvector(omega) || ~isvector(terrain_angle)

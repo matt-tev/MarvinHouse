@@ -7,7 +7,7 @@ function tau = tau_dcmotor(omega,motor)
     tauS = motor.torque_stall;
     tauNL = motor.torque_noload;
     
-    
+    % error check
     if nargin ~= 2 
         error('There is not 2 inputs.');
     elseif ~isvector(omega)

@@ -2,6 +2,7 @@ function m = get_mass(rover)
     %   Function get_mass takes input input rover(struct) and outputs m
     %   which is the mass of the entire rover
 
+    % error check
     if nargin ~= 1
         error('There may only be one input.');
     elseif ~isstruct(rover)     

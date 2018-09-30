@@ -14,7 +14,10 @@ for i=1:N
     for j=1:N
         Crr_sample = CRR(i,j);
         slope_sample = SLOPE(i,j);
-            VMAX(i,j) = radius*fzero(@(omega)F_net(omega,slope_sample,rover,planet,Crr_sample),x0)/NG;
+        % v_max is the fastest the rover will go at any omega
+        % slope_sample and Crr_sample gives specific origins to where the 
+        % max velocity should be recorded 
+        VMAX(i,j) = radius*fzero(@(omega)F_net(omega,slope_sample,rover,planet,Crr_sample),x0)/NG;
     end
 end
    

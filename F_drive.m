@@ -1,8 +1,12 @@
 function Fd = F_drive(omega, rover)
     %   Function F_drive takes input omega(vector) and input rover(struct)
     %   and outputs Fd, which is the driving force outputted from the rover
+    
+    % this next line tells the output function how many arguments to output
+    % in order to be the same length as the omega input
     Fd = zeros(1,length(omega));
     
+    % error check
     if nargin ~= 2
         error('There must be two input arguments.');
     elseif ~isvector(omega)
