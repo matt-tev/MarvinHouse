@@ -16,7 +16,6 @@ function F = F_net(omega,terrain_angle,rover,planet, Crr)
     elseif ~isvector(Crr) || Crr < 0
         error('The fifth input must be a positive scalar.');
     else
-        %PROBABLY NOT RIGHT
         for i = 1:length(omega)
             F(i) = F_drive(omega(i),rover)+ ...
                 F_rolling(omega(i),terrain_angle(i),rover,planet,Crr) + ... 

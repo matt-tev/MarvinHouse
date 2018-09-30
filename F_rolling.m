@@ -20,7 +20,6 @@ function Frr = F_rolling(omega, terrain_angle, rover, planet, Crr)
         v = zeros(1,length(omega));
         Frr = zeros(1,length(omega));
         
-        % MAY BE WRONG DIRECTION AND OFF BY MULTIPLE OF 6
         for i = 1:length(omega)
             Fn(i) = -get_mass(rover)*planet.g*cosd(terrain_angle(i));
             Frr_simple(i) = Crr*Fn(i);

@@ -12,7 +12,6 @@ function Fgt = F_gravity(terrain_angle, rover, planet)
     elseif ~isstruct(planet)
         error('Planet must be a struct.')
     else
-        %MAYBE NOT RIGHT
         Fgt = get_mass(rover)*-sind(terrain_angle)*planet.g;
         %positive/ uphilll should yield negative force
         % should be vectorized

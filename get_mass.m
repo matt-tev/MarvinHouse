@@ -7,7 +7,6 @@ function m = get_mass(rover)
     elseif ~isstruct(rover)     
         error('The input rover must be a struct.');
     else
-        %MAYBE NOT RIGHT
         mass = rover.chassis.mass + rover.power_subsys.mass + rover.science_payload.mass + 6*(rover.wheel_assembly.motor.mass + rover.wheel_assembly.speed_reducer.mass + rover.wheel_assembly.wheel.mass);
     end
         
