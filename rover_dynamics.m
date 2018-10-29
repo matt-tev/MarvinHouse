@@ -23,4 +23,6 @@ function dydt = rover_dynamics(t, y, rover, planet, experiment)
     elseif ~(isstruct(rover) && isstruct(planet) && isstruct(experiment))
         error('The third through fifth inputs must be structs.');
     end
+    
+    terrain_angle = interp1(experiment.alpha_dist,experiment.alpha_deg,y(2),'spline');
 end

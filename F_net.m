@@ -1,3 +1,16 @@
+% Function F_net computes the combined drive force, in Newtons, acting 
+% on the rover due to all six wheels. 
+%    
+% CALLING SYNTAX
+%   F = F_net(omega, terrain_angle, rover, planet, Crr)
+% INPUTS
+%   omega           N-element array    Array of motor shaft speeds [rad/s]
+%   terrain_angle   N-element array    Array of terrain angles [deg]
+%   rover           struct             Data structure containing rover parameters
+%   planet          struct             Data structure containing planet gravity parameter
+%   Crr             scalar             Value of rolling resistance coefficient [-]
+% OUTPUTS
+%   F               N-element array    Array of forces [N]
 function F = F_net(omega,terrain_angle,rover,planet, Crr)
     %   Function F_rolling takes input1 omega(vector),input2 terrain_angle
     %   (vector), input3 rover(struct), input4 planet(struct), and input5

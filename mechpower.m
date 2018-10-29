@@ -19,4 +19,6 @@ function P = mechpower(v, rover)
     elseif ~isstruct(rover)
         error('The second input must be a struct.');
     end
+    %Need to figure out how to get omega inside function
+    P = tau_dcmotor(motorW(v,rover),rover.wheel_assembly.motor) .* motorW(v,rover);
 end

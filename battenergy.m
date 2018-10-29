@@ -28,4 +28,8 @@ function E = battenergy(t, v, rover)
     elseif ~isstruct(rover)
         error('The second input must be a struct.');
     end
+    
+    tau_data = rover.wheel_assembly.motor.effcy_tau;
+    eff_data = rover.wheel_assembly.motor.effcy;
+    eff = interp1(tau_data,eff_data,tau_motor,'spline');
 end
