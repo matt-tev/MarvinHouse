@@ -1,5 +1,5 @@
 %rover_experiment1
-load('experiment1.mat')
+load experiment1
 end_event.max_distance = 1000;
 end_event.max_time = 10000;
 end_event.min_velocity = 0.01;
