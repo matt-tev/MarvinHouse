@@ -31,7 +31,7 @@ function F = F_net(omega,terrain_angle,rover,planet, Crr)
         error('The variable terrain_angle must be between the values of -75 degrees and 75 degrees.');
     elseif ~isstruct(rover) || ~isstruct(planet)
         error('The thrid and fourth input arguments must be structs.');
-    elseif ~isvector(Crr) || Crr < 0
+    elseif (~isscalar(Crr)) || (Crr < 0)
         error('The fifth input must be a positive scalar.');
     else
         for i = 1:length(omega)

@@ -19,7 +19,7 @@ motor.effcy = [0 0.60 0.75 0.73 0.55 0.05];
 speed_reducer.type = 'reverted';
 speed_reducer.diam_pinion = 0.04;
 speed_reducer.diam_gear = 0.07;
-speed_reducer.mass = 5;
+speed_reducer.mass = 1.5;
 
 wheel.radius = 0.3;
 wheel.mass = 1.0;
@@ -39,5 +39,5 @@ rover.science_payload = science_payload;
 rover.power_subsys = power_subsys;
 %rover.telemtry = telemetry;
 
-%omega = [0 1 1.5 2 -1 -1.5];
+omega = [0 0.5 1 2 3 3.8];
 %terrain_angle = [10 20 30 45 -45 60];

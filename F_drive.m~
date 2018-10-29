@@ -23,9 +23,7 @@ function Fd = F_drive(omega, rover)
     
     tau = tau_dcmotor(omega, rover.wheel_assembly.motor);
         for i = 1:length(omega)
-            Fd(i) = 6*(tau(i).* ...
-                get_gear_ratio(rover.wheel_assembly.speed_reducer)./ ...
-                    rover.wheel_assembly.wheel.radius);
+            Fd(i) = 6*(tau(i).* ..get_gear_ratio(rover.wheel_assembly.speed_reducer)./rover.wheel_assembly.wheel.radius);
         end
     
     
