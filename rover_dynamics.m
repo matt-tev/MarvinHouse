@@ -28,6 +28,6 @@ function dydt = rover_dynamics(t, y, rover, planet, experiment)
     % state vector is [velocity,position]
     % finding derivative of state vector
     
-    [t,y] = ode45(odefun,tspan,y0)
+    % [t,y] = ode45(odefun,tspan,y0)
     terrain_angle = interp1(experiment.alpha_dist,experiment.alpha_deg,y(2),'spline');
 end
