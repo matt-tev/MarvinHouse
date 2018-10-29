@@ -12,6 +12,6 @@ for i = 1:length(Crr_list)
     % should be recorded 
     v_max(i) = radius*fzero(@(omega)F_net(omega,terrain_angle,rover,planet,Crr_list(i)),x0)/NG;
 end
-plot(v_max,Crr_list);
+plot(Crr_list,v_max);
 xlabel('Velocity Max (m/s)');
 ylabel('Crr List');

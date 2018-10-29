@@ -21,6 +21,14 @@ function rover = simulate_rover(rover, planet, experiment, end_event)
     elseif ~(isstruct(rover) && isstruct(planet) && isstruct(experiment) && isstruct(end_event))
         error('All inputs must be structs.');
     end
+    energy_per_distance = battery_energy/distance traveled;
     
-    % Not Done
+    %options = odeset('Events',@(t,y)end_of_mission_event(t,y,end_event));
+    %[T,Y] = odesolver(differential equation, TSPAN, Initial Conditions, options);
+    
+    rover.telemetry.Time = Time;
+    rover.telemetry.completion_time = completion_time;
+    rover.telemetry.velocity = velocity;
+    rover.telemetry.position
+    rover.telemetry.distance_traveled
 end
