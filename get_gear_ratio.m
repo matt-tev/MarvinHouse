@@ -12,7 +12,7 @@ function Ng = get_gear_ratio(speed_reducer)
         error('There is not 1 input.')
     elseif ~isstruct(speed_reducer)
         error('Speed Reducer is not a struct.')
-    elseif ~strcmp(spee_reducer.type,'reverted')
+    elseif ~strcmp(speed_reducer.type,'reverted')
         error('The field "type" inside struct "speed_reducer" is not a string equal to ''reverted''.');
     end
     

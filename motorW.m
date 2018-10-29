@@ -17,5 +17,6 @@ function w = motorW(v, rover)
     elseif ~isstruct(rover)
         error('The second input must be a struct.');
     end
-    w = get_gear_ratio(rover.speed_reducer)*(v/rover.wheel_assembly.wheel.radius);
+    % Maybe done
+    w = get_gear_ratio(rover.wheel_assembly.speed_reducer)*(v/rover.wheel_assembly.wheel.radius);
 end

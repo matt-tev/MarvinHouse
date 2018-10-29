@@ -21,4 +21,6 @@ function rover = simulate_rover(rover, planet, experiment, end_event)
     elseif ~(isstruct(rover) && isstruct(planet) && isstruct(experiment) && isstruct(end_event))
         error('All inputs must be structs.');
     end
+    
+    % Not Done
 end
