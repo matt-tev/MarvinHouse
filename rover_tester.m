@@ -2,6 +2,9 @@
 
 planet = struct('g',{3.72});
 
+end_event.max_distance = 50;
+end_event.max_time = 5000;
+end_event.min_velocity = 0.01;
 
 power_subsys = struct('mass', {90});
 
@@ -27,6 +30,8 @@ wheel_assembly.wheel = wheel;
 wheel_assembly.speed_reducer = speed_reducer;
 wheel_assembly.motor = motor;
 
+
+
 %telemetry.Time;
 %telemetry.completion_time;
 %telemetry.velocity
@@ -38,6 +43,8 @@ rover.chassis = chassis;
 rover.science_payload = science_payload;
 rover.power_subsys = power_subsys;
 %rover.telemtry = telemetry;
+
+
 
 omega = [0 0.5 1 2 3 3.8];
 %terrain_angle = [10 20 30 45 -45 60];

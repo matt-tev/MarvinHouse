@@ -22,6 +22,6 @@ for i=1:N
 end
    
 surf(CRR, SLOPE, VMAX);
-xlabel('CRR')
-ylabel('SLOPE')
-zlabel('VMAX')
+xlabel('CRR');
+ylabel('SLOPE');
+zlabel('VMAX');
