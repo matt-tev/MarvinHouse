@@ -21,16 +21,17 @@ function E = battenergy(t, v, rover)
     % Data Validation
     if nargin ~= 3
         error('There must be three inputs.');
-    elseif ~isnumeric(t) || ~isscalar(t)
-        error('The first input must be a scalar.');
     elseif ~(isnumeric(v) || isvector(v))
         error('The first input must be a scalar or vector');
     elseif ~isstruct(rover)
-        error('The second input must be a struct.');
+        error('The third input must be a struct.');
     end
     
     % Not Done
+    % Pbatt
     tau_data = rover.wheel_assembly.motor.effcy_tau;
     eff_data = rover.wheel_assembly.motor.effcy;
-    eff = interp1(tau_data,eff_data,tau_motor,'spline');
+    eff = interp1(tau_data,eff_data,tau_dcmotor(motorW(v,rover),rover.wheel_assembly.motor),'spline');
+    Pmotor = mechpower(v, rover);
+    Pbatt = Pmotor/eff;
 end
