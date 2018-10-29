@@ -18,12 +18,12 @@ function dydt = rover_dynamics(t, y, rover, planet, experiment)
     %Data Validation
     if ~isnumeric(t) || ~isscalar(t)
         error('The first input must be a scalar.');
-    % elseif ~isvector(y) || (size(y) == [2,1])
-        % error('The second input must be a 2x1 vector)');
+    elseif ~isvector(y) || (length(y) ~= 2)
+         error('The second input must be a 2x1 array');
     elseif ~(isstruct(rover) && isstruct(planet) && isstruct(experiment))
         error('The third through fifth inputs must be structs.');
     end
-    % Not Done
+    % Maybe Done
     
     % state vector is [velocity,position]
     % finding derivative of state vector
