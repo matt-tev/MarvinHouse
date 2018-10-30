@@ -19,6 +19,9 @@ function P = mechpower(v, rover)
     elseif ~isstruct(rover)
         error('The second input must be a struct.');
     end
-    % Not done
+    % P = tau*omega
+    %   where P is the mechanical power at a given instant
+    %         tau is the torque output by the rover in N*m
+    %         omega is the angular velocity of the motor shaft in rad/s
     P = tau_dcmotor(motorW(v,rover),rover.wheel_assembly.motor) .* motorW(v,rover);
 end
