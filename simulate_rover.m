@@ -25,15 +25,19 @@ function rover = simulate_rover(rover, planet, experiment, end_event)
     options = odeset('Events',@(t,y)end_of_mission_event(t,y,end_event));
     %[T,Y] = odesolver(differential equation, TSPAN, Initial Conditions, options);
     
-    [Time,position] = ode45(@(t,y) rover_dynamics(t, y, rover, planet, experiment),experiment.time_range,experiment.initial_conditions,options);
+    [Time,state] = ode15s(@(t,y) rover_dynamics(t, y, rover, planet, experiment),experiment.time_range,experiment.initial_conditions,options);
     
- 
+    %Time = transpose(Time);
+    velocity = state(:,1);
+    %velocity = transpose(velocity);
+    position = state(:,2);
+    %position = transpose(position);
     
-    %completion_time = length(Time)*resolution
-    %distance_traveled = abs(integral(velocity))
+    completion_time = Time(end);
+    distance_traveled = abs(trapz(Time,velocity));
     
     power = mechpower(velocity,rover);
-    battery_energy = battenergy(Time,velocity,rover);
+    battery_energy = battenergy(transpose(Time),transpose(velocity),rover);
     max_velocity = max(velocity);
     average_velocity = distance_traveled/completion_time;
     energy_per_distance = battery_energy/distance_traveled;

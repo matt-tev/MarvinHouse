@@ -23,5 +23,11 @@ function P = mechpower(v, rover)
     %   where P is the mechanical power at a given instant
     %         tau is the torque output by the rover in N*m
     %         omega is the angular velocity of the motor shaft in rad/s
-    P = tau_dcmotor(motorW(v,rover),rover.wheel_assembly.motor) .* motorW(v,rover);
+    [m,n] = size(v);
+    if n ~= 1
+        P =  motorW(v,rover) .* tau_dcmotor(motorW(v,rover),rover.wheel_assembly.motor);
+    elseif n == 1
+        P =  motorW(v,rover) .* tau_dcmotor(motorW(v,rover),rover.wheel_assembly.motor)';
+    end
+    
 end

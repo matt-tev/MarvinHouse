@@ -27,8 +27,8 @@ function E = battenergy(t, v, rover)
         error('The first two inputs must be the same length');
     elseif ~isstruct(rover)
         error('The third input must be a struct.');
-    elseif any(v) > 0.37224489
-        error('Rover does not go that fast')
+    %elseif any(v) > 0.37224489
+     %   error('Rover does not go that fast')
     end
     
     % Maybe Done
@@ -38,4 +38,5 @@ function E = battenergy(t, v, rover)
     Pmotor = mechpower(v, rover);
     Pbatt = Pmotor./eff;
     E = trapz(t,Pbatt); 
+
 end
