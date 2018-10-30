@@ -16,6 +16,8 @@ function Ng = get_gear_ratio(speed_reducer)
         error('The field "type" inside struct "speed_reducer" is not a string equal to ''reverted''.');
     end
     
+    % calculate the gear ratio based on the diameter of the gear and the
+    % diameter of the pinion
     Ng = (speed_reducer.diam_gear/speed_reducer.diam_pinion)^2;   
 
 end

@@ -35,6 +35,8 @@ function F = F_net(omega,terrain_angle,rover,planet, Crr)
         error('The fifth input must be a positive scalar.');
     else
         for i = 1:length(omega)
+            % calculate the total force based on drive force, force due to
+            % rolling resistance, and force due to gravity of the planet
             F(i) = F_drive(omega(i),rover)+ ...
                 F_rolling(omega(i),terrain_angle(i),rover,planet,Crr) + ... 
                     F_gravity(terrain_angle(i),rover,planet);

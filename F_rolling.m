@@ -31,6 +31,7 @@ function Frr = F_rolling(omega, terrain_angle, rover, planet, Crr)
     elseif ~isvector(Crr) || Crr < 0
         error('The fifth input must be a positive scalar.');
     end
+    
     % these next lines tell the output function how many arguments to output
     % in order to be the same length as the omega input
     Fn = zeros(1,length(terrain_angle));
@@ -39,9 +40,14 @@ function Frr = F_rolling(omega, terrain_angle, rover, planet, Crr)
     Frr = zeros(1,length(omega));
         
     for i = 1:length(omega)
+        % calcualte the force based on the mass of the rover and the
+        % terrain angle
         Fn(i) = -get_mass(rover)*planet.g*cosd(terrain_angle(i));
+        % calculate force along with the resistance coefficient
         Frr_simple(i) = Crr*Fn(i);
+        % find the velocity of the rover
         v(i) = rover.wheel_assembly.wheel.radius*(omega(i)/get_gear_ratio(rover.wheel_assembly.speed_reducer));
+        % calculate the overall force based on rolling resistance 
         Frr(i) = (erf(40*v(i))*Frr_simple(i));
     end
     

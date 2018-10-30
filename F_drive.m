@@ -21,8 +21,12 @@ function Fd = F_drive(omega, rover)
     % in order to be the same length as the omega input
     Fd = zeros(1,length(omega));
     
+    % call tau_dcmotor for motor specifications
     tau = tau_dcmotor(omega, rover.wheel_assembly.motor);
         for i = 1:length(omega)
+            % calculate the drive force based on the motor shaft speed from
+            % tau_dcmotor and the properties of the motor, speed
+            % reducer from get_gear_ratio,and drive track 
             Fd(i) = 6*(tau(i).* ...
                 get_gear_ratio(rover.wheel_assembly.speed_reducer)./ ...
                     rover.wheel_assembly.wheel.radius);

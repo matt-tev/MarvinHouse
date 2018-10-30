@@ -16,6 +16,10 @@ function m = get_mass(rover)
         error('The input rover must be a struct.');
     end
     
+    % calculate the total mass of the rover by adding the masses of the
+    % chasis, power subsystem, science payload, and the total wheel
+    % assembly which is multiplied by 6 for all 6 wheels to be accounted
+    % for
     m = rover.chassis.mass + rover.power_subsys.mass + ...
             rover.science_payload.mass + ...
                 6*(rover.wheel_assembly.motor.mass + ...

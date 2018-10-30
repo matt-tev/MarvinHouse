@@ -21,9 +21,10 @@ function Fgt = F_gravity(terrain_angle, rover, planet)
         error('Planet must be a struct.')
     end
     
+    % calculate the force due to gravity based on the mass of the rover and
+    % gravity of the planet
     Fgt = get_mass(rover)*-sind(terrain_angle)*planet.g;
     %positive/ uphilll should yield negative force
     % should be vectorized
     
-
 end
