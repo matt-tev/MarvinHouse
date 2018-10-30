@@ -24,9 +24,10 @@ function rover = simulate_rover(rover, planet, experiment, end_event)
     
     options = odeset('Events',@(t,y)end_of_mission_event(t,y,end_event));
     %[T,Y] = odesolver(differential equation, TSPAN, Initial Conditions, options);
-    %[Time,position] = ode45(@rover_dynamics(t, y, rover, planet, experiment),experiment.time_range,experiment.initial_conditions,options);
     
+    [Time,position] = ode45(@rover_dynamics(t, y, rover, planet, experiment)),experiment.time_range,experiment.initial_conditions,options;
     
+ 
     
     %completion_time = length(Time)*resolution
     %distance_traveled = abs(integral(velocity))
@@ -48,4 +49,5 @@ function rover = simulate_rover(rover, planet, experiment, end_event)
     rover.telemetry.power = power;
     rover.telemetry.battery_energy = battery_energy;
     rover.telemetry.energy_per_distance = energy_per_distance;
+    
 end
