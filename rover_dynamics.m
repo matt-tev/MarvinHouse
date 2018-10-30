@@ -20,19 +20,17 @@ function dydt = rover_dynamics(t, y, rover, planet, experiment)
         error('The first input must be a scalar.');
     elseif ~isvector(y) || (length(y) ~= 2)
          error('The second input must be a 2x1 array');
+    elseif ~(logical([1 1]) == (size(y) == [2, 1]))
+         error('The second input must be a 2x1 array');
     elseif ~(isstruct(rover) && isstruct(planet) && isstruct(experiment))
         error('The third through fifth inputs must be structs.');
     end
     % Maybe Done
     
-    % state vector is [velocity,position]
-    % finding derivative of state vector
-    
-    % [t,y] = ode45(odefun,tspan,y0)
     v = y(1);
     omega = motorW(v,rover);
     terrain_angle = interp1(experiment.alpha_dist,experiment.alpha_deg,y(2),'spline');
-    Crr = experiment.crr;
+    Crr = experiment.crr; %%%Error in exeriment1.m
     accel = F_net(omega,terrain_angle,rover,planet, Crr)/get_mass(rover);
     dydt(1) = accel;
     dydt(2) = y(1);

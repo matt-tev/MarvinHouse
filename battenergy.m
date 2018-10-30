@@ -28,7 +28,6 @@ function E = battenergy(t, v, rover)
     end
     
     % Not Done
-    % Pbatt
     tau_data = rover.wheel_assembly.motor.effcy_tau;
     eff_data = rover.wheel_assembly.motor.effcy;
     eff = interp1(tau_data,eff_data,tau_dcmotor(motorW(v,rover),rover.wheel_assembly.motor),'spline');
