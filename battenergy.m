@@ -38,5 +38,6 @@ function E = battenergy(t, v, rover)
     Pmotor = mechpower(v, rover);
     Pbatt = Pmotor./eff;
     E = trapz(t,Pbatt); 
+    E = 6*E;
 
 end

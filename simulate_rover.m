@@ -23,35 +23,22 @@ function rover = simulate_rover(rover, planet, experiment, end_event)
     end
     
     options = odeset('Events',@(t,y)end_of_mission_event(t,y,end_event));
-    %[T,Y] = odesolver(differential equation, TSPAN, Initial Conditions, options);
     
     [Time,state] = ode15s(@(t,y) rover_dynamics(t, y, rover, planet, experiment),experiment.time_range,experiment.initial_conditions,options);
-    
-    %Time = transpose(Time);
+     
     velocity = state(:,1);
-    %velocity = transpose(velocity);
     position = state(:,2);
-    %position = transpose(position);
-    
-    completion_time = Time(end);
-    distance_traveled = abs(trapz(Time,velocity));
-    
-    power = mechpower(velocity,rover);
-    battery_energy = battenergy(transpose(Time),transpose(velocity),rover);
-    max_velocity = max(velocity);
-    average_velocity = distance_traveled/completion_time;
-    energy_per_distance = battery_energy/distance_traveled;
     
     %populating telemetry
     rover.telemetry.Time = Time;
-    rover.telemetry.completion_time = completion_time;
     rover.telemetry.velocity = velocity;
     rover.telemetry.position = position;
-    rover.telemetry.distance_traveled = distance_traveled;
-    rover.telemetry.max_velocity = max_velocity;
-    rover.telemetry.average_velocity = average_velocity;
-    rover.telemetry.power = power;
-    rover.telemetry.battery_energy = battery_energy;
-    rover.telemetry.energy_per_distance = energy_per_distance;
     
+    rover.telemetry.completion_time = Time(end);
+    rover.telemetry.distance_traveled = abs(trapz(Time,velocity));
+    rover.telemetry.max_velocity = max(velocity);
+    rover.telemetry.average_velocity = rover.telemetry.distance_traveled/rover.telemetry.completion_time;
+    rover.telemetry.power = mechpower(velocity,rover);
+    rover.telemetry.battery_energy = battenergy(transpose(Time),transpose(velocity),rover);
+    rover.telemetry.energy_per_distance = rover.telemetry.battery_energy/rover.telemetry.distance_traveled;
 end
