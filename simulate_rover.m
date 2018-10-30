@@ -25,7 +25,7 @@ function rover = simulate_rover(rover, planet, experiment, end_event)
     options = odeset('Events',@(t,y)end_of_mission_event(t,y,end_event));
     %[T,Y] = odesolver(differential equation, TSPAN, Initial Conditions, options);
     
-    [Time,position] = ode45(@rover_dynamics(t, y, rover, planet, experiment)),experiment.time_range,experiment.initial_conditions,options;
+    [Time,position] = ode45(@(t,y) rover_dynamics(t, y, rover, planet, experiment),experiment.time_range,experiment.initial_conditions,options);
     
  
     

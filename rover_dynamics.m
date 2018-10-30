@@ -32,6 +32,5 @@ function dydt = rover_dynamics(t, y, rover, planet, experiment)
     terrain_angle = interp1(experiment.alpha_dist,experiment.alpha_deg,y(2),'spline');
     Crr = experiment.crr; %%%Error in exeriment1.m
     accel = F_net(omega,terrain_angle,rover,planet, Crr)/get_mass(rover);
-    dydt(1) = accel;
-    dydt(2) = y(1);
+    dydt = [accel; y(1)];
 end
