@@ -25,12 +25,16 @@ function dydt = rover_dynamics(t, y, rover, planet, experiment)
     elseif ~(isstruct(rover) && isstruct(planet) && isstruct(experiment))
         error('The third through fifth inputs must be structs.');
     end
-    % Maybe Done
     
+    % initialize velocity as the first value in y
     v = y(1);
+    % call motorW to get omega
     omega = motorW(v,rover);
+    % calculate the terrain angles
     terrain_angle = interp1(experiment.alpha_dist,experiment.alpha_deg,y(2),'spline');
+    % call the Crr value from the struct given
     Crr = experiment.Crr; %%%Error in exeriment1.m
+    % calculate acceleration and then create the dydt array
     accel = F_net(omega,terrain_angle,rover,planet, Crr)/get_mass(rover);
     dydt = [accel; y(1)];
 end
