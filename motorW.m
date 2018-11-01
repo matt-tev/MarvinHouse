@@ -19,8 +19,8 @@ function w = motorW(v, rover)
     end
     % w = Ng * v / r
     % where w is the angular velocity of the output shaft in rad/s
-    %       Ng is the gear ratio found by using get_gear_ratio()
-    %       v is the velocity of the rover
-    %       r is the radius of the wheels
+    %       Ng  is the gear ratio found by using get_gear_ratio()
+    %       v   is the velocity of the rover
+    %       r   is the radius of the wheels
     w = get_gear_ratio(rover.wheel_assembly.speed_reducer)*v/rover.wheel_assembly.wheel.radius;
 end

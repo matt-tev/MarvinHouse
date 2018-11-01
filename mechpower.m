@@ -20,8 +20,8 @@ function P = mechpower(v, rover)
         error('The second input must be a struct.');
     end
     % P = tau*omega
-    %   where P is the mechanical power at a given instant
-    %         tau is the torque output by the rover in N*m
+    %   where P     is the mechanical power at a given instant
+    %         tau   is the torque output by the rover in N*m
     %         omega is the angular velocity of the motor shaft in rad/s
     [m,n] = size(v);
     if n ~= 1
