@@ -12,7 +12,7 @@ function w = motorW(v, rover)
     %Data Validation
     if nargin ~= 2
         error('There must be two inputs.');
-    elseif ~(isnumeric(v) && isvector(v))
+    elseif ~(isnumeric(v) && isvector(v)) %is NaN?
         error('The first input must be a scalar or vector');
     elseif ~isstruct(rover)
         error('The second input must be a struct.');

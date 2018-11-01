@@ -14,7 +14,7 @@ function P = mechpower(v, rover)
     % Data Validation
     if nargin ~= 2
         error('There must be two inputs.');
-    elseif ~(isnumeric(v) || isvector(v))
+    elseif ~(isnumeric(v) && isvector(v))
         error('The first input must be a scalar or vector');
     elseif ~isstruct(rover)
         error('The second input must be a struct.');
@@ -29,5 +29,4 @@ function P = mechpower(v, rover)
     elseif n == 1
         P =  motorW(v,rover) .* tau_dcmotor(motorW(v,rover),rover.wheel_assembly.motor)';
     end
-    
 end

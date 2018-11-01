@@ -28,14 +28,22 @@ function E = battenergy(t, v, rover)
     elseif ~isstruct(rover)
         error('The third input must be a struct.');
     end
+    % Pmotor is the power of the rotating shaft at a given point in time
+    % Pbatt is the power consumed by the battery at a given point in time
+    % eff is the effeciency of the motor at operating torque tau
+    % E is the total energy output by the motor from t0 to tf
     
-    % Maybe Done
     tau_data = rover.wheel_assembly.motor.effcy_tau;
     eff_data = rover.wheel_assembly.motor.effcy;
     eff = interp1(tau_data,eff_data,tau_dcmotor(motorW(v,rover),rover.wheel_assembly.motor),'spline');
+
+    % Pmotor = tau*omega which is accomplished using mechpower
     Pmotor = mechpower(v, rover);
+    % Pmotor = Pbatt*eff , which can be rearranging
     Pbatt = Pmotor./eff;
+    % E can be calculated by the numerical integration of Pbatt
     E = trapz(t,Pbatt); 
+    % Account for all 6 wheel assemblies
     E = 6*E;
 
 end
