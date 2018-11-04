@@ -7,9 +7,9 @@
 % CALLING SYNTAX
 %   E = battenergy(t,v,rover)
 % INPUTS
-%   t   N-element array     Array of time samples from a rover simulation [s]
-%   v   N-element array     Array of rover velocity data from a simulation [m/s]
-%                           rover struct Data structure containing rover definition
+%   t       N-element array     Array of time samples from a rover simulation [s]
+%   v       N-element array     Array of rover velocity data from a simulation [m/s]
+%   rover   struct              Data structure containing rover definition
 % OUTPUTS
 %   E       scalar          Total electrical energy consumed from the rover battery pack over
 %                           the input simulation profile. [J]
@@ -42,7 +42,11 @@ function E = battenergy(t, v, rover)
     % Pmotor = Pbatt*eff , which can be rearranging
     Pbatt = Pmotor./eff;
     % E can be calculated by the numerical integration of Pbatt
-    E = trapz(t,Pbatt); 
+    if length(t) ~= 1
+        E = trapz(t,Pbatt);
+    else
+        E = 0;
+    end
     % Account for all 6 wheel assemblies
     E = 6*E;
 
