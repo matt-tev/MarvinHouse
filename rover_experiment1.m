@@ -2,7 +2,7 @@
 % guidlines the find position vs. time, velocity vs. time and power vs.
 % time
 load experiment1
-experiment.Crr = 0.1; % fixing error in experiment1
+%experiment.Crr = 0.1; % fixing error in experiment1
 end_event.max_distance = 1000;
 end_event.max_time = 10000;
 end_event.min_velocity = 0.01;

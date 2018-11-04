@@ -33,7 +33,12 @@ function dydt = rover_dynamics(t, y, rover, planet, experiment)
     % calculate the terrain angles
     terrain_angle = interp1(experiment.alpha_dist,experiment.alpha_deg,y(2),'spline');
     % call the Crr value from the struct given
-    Crr = experiment.Crr; %%%Error in exeriment1.m
+    if isfield(experiment,'Crr')
+         Crr = experiment.Crr; %%%Error in exeriment1.m
+    elseif isfield(experiment,'crr')
+         Crr = experiment.crr; %%%Error in exeriment1.m
+    end
+   
     % calculate acceleration and then create the dydt array
     accel = F_net(omega,terrain_angle,rover,planet, Crr)/get_mass(rover);
     dydt = [accel; y(1)];
