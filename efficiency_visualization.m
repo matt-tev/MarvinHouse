@@ -1,7 +1,7 @@
 %efficiency_visualization
 tau_data = motor.effcy_tau;
 eff_data = motor.effcy*100;
-tau_motor = linspace(0,170,100);
+tau_motor = linspace(motor.torque_noload,motor.torque_stall,100);
 
 % calculate the efficiency based on torque values given in the rover struct
 eff = interp1(tau_data,eff_data,tau_motor,'spline');
