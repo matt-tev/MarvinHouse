@@ -44,6 +44,6 @@ function rover = simulate_rover(rover, planet, experiment, end_event)
     rover.telemetry.max_velocity = max(velocity); % max velocity is the maximum value in the velocity vector
     rover.telemetry.average_velocity = rover.telemetry.distance_traveled/rover.telemetry.completion_time; %avg vel is distance traveled / time elapsed
     rover.telemetry.power = mechpower(velocity,rover); % instantaneous power outputted at each point in Time
-    rover.telemetry.battery_energy = battenergy(transpose(Time),transpose(velocity),rover); % total battery energy consumed throughout experiment
+    rover.telemetry.battery_energy = battenergy(Time,velocity,rover); % total battery energy consumed throughout experiment
     rover.telemetry.energy_per_distance = rover.telemetry.battery_energy/rover.telemetry.distance_traveled; % energy per distance is energy consumed / distance traveled
 end

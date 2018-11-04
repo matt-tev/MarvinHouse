@@ -36,10 +36,16 @@ function E = battenergy(t, v, rover)
     tau_data = rover.wheel_assembly.motor.effcy_tau;
     eff_data = rover.wheel_assembly.motor.effcy;
     eff = interp1(tau_data,eff_data,tau_dcmotor(motorW(v,rover),rover.wheel_assembly.motor),'spline');
-
-    % Pmotor = tau*omega which is accomplished using mechpower
-    Pmotor = mechpower(v, rover);
-    % Pmotor = Pbatt*eff , which can be rearranging
+    
+    [m,n] = size(v);
+    if n ~= 1 % in case velocity is [1xN]
+        % Pmotor = tau*omega which is accomplished using mechpower
+        Pmotor = mechpower(v, rover);   
+    elseif n == 1 % in case velocity is [Nx1]
+        Pmotor = mechpower(transpose(v), rover);    
+    end
+    
+    % Pmotor = Pbatt*eff , rearranged for Pbatt = Pmotor/eff
     Pbatt = Pmotor./eff;
     % E can be calculated by the numerical integration of Pbatt
     if length(t) ~= 1
