@@ -33,8 +33,9 @@ function dydt = rover_dynamics(t, y, rover, planet, experiment)
     % calculate the terrain angles
     terrain_angle = interp1(experiment.alpha_dist,experiment.alpha_deg,y(2),'spline');
     % call the Crr value from the struct given
-    if isfield(experiment,'Crr')
-         Crr = experiment.Crr; %%%Error in exeriment1.m
+    if isfield(experiment,'Crr') % This is included because of an error in experiment1.mat where 
+                                 % field 'Crr' was labeled crr
+         Crr = experiment.Crr;
     elseif isfield(experiment,'crr')
          Crr = experiment.crr; %%%Error in exeriment1.m
     end
