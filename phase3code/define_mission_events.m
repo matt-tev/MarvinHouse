@@ -1,0 +1,16 @@
+% define_mission_events
+%
+% Creates a structure called mission_events that defines the altitudes [m]
+% at which particular EDL events occur. This includes when the heat shield 
+% and parachute are ejected, when the rockets begin to fire and when the
+% skycrane begines to operate.
+%
+%
+
+mission_events = struct(...
+    'alt_heatshield_eject', 8000, ...
+    'alt_parachute_eject', 900, ...
+    'alt_rockets_on', 1800, ...
+    'alt_skycrane_on', 7.6 ...
+    );
+
