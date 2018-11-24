@@ -45,7 +45,7 @@ options = odeset('event',h_edl_events);%,'NonNegative',3);
 tspan = [0,tmax];
 
 % initial state of system
-y0 = [
+y01 = [
     edl_system.velocity
     edl_system.altitude 
     edl_system.rocket.initial_fuel_mass*edl_system.num_rockets
@@ -65,7 +65,7 @@ while ~TERMINATE_SIM
     % run simulation until an event occurs 
     % ode113 appears to behaive better than ode45 for certain parameter
     % values
-    [t_part,Y_part,TE,YE,IE] = ode113(@(t,y)edl_dynamics(t,y,edl_system, mars),tspan,y0,options);
+    [t_part,Y_part,TE,YE,IE] = ode113(@(t,y)edl_dynamics(t,y,edl_system, mars),tspan,y01,options);
 %     [t_part,Y_part,TE,YE,IE] = ode45(@(t,y)edl_dynamics(t,y,edl_system, planet),tspan,y0,options);
 
         % process the event and update the edl_system accordingly. Also sets
@@ -219,7 +219,7 @@ for j=1:num_events
                     if ITER_INFO
                         fprintf('The rover has landed!\n\t>>> t=%f [s]\trover pos = %f [m]\t rover speed = %f [m/s] (sky crane at h=%f\tv=%f\n',time,altitude+rover_rel_pos,speed+rover_rel_vel,altitude,speed);
                     end
-                    succes(i) = 1;
+                    success(i) = 1;
                     y0 = [];
                     TERMINATE_SIM = true;
                     edl_system.sky_crane.on = false;
