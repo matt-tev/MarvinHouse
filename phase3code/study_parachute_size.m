@@ -54,31 +54,32 @@ for i = 1:length(diameter)
     Y = [];
     edl_system = edl_system_default;
 end
-
+% Plot data collected
 subplot(3,1,1)
 plot(diameter,comp_t)
 yticks([0 100 200 300 400]);
 xlabel('Parachute Diameter (m)');
 ylabel('Simulated Time (s)');
-grid on;
 title('Simulated Time vs. Parachute Diameter');
+grid on;
 
 subplot(3,1,2);
 plot(diameter,comp_v);
 yticks([ -100 -75 -50 -25 0]);
-ylim([-105 5]);
+ylim([-105 5]); % expand axis for visual benefit
 xlabel('Parachute Diameter (m)');
 ylabel('Landing Speed (s)');
-grid on;
 title('Rover Speed at Termination vs. Parachute Diameter');
+grid on;
+
 
 subplot(3,1,3)
 scatter(diameter,success,'Filled');
 yticks([0 1]);
-yticklabels({'Failure','Success'})
-xlim([14.9 19.1]);
-ylim([-0.1 1.1]);
+yticklabels({'Failure','Success'}) % Label Succes and Failure
+xlim([14.9 19.1]); % expand axis for visual benefit
+ylim([-0.1 1.1]); % expand axis for visual benefit
 xlabel('Parachute Diameter (m)');
 ylabel('Landing Success');
-grid on;
 title('Rover Landing Success vs. Parachute Diameter');
+grid on;
