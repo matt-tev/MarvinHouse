@@ -7,7 +7,10 @@ function [t,Y,edl_system] = simulate_edl(edl_system,planet,mission_events,tmax,I
 %
 % This is a horrible example of a header comment. It should be improved.
 %
-%
+%   Y(:,1) - velocity, Y(:,2) - altitude, Y(:,3) - fuel mass, 
+%       Y(:,4) - speed error integral, Y(:,5) - position error integral, 
+%           Y(:,6)- velocity of rover relative to sky crane, 
+%               Y(:,7) - positon of rover relative to sky crane
 
 
 if nargin<4
