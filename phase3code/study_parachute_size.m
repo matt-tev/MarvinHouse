@@ -77,7 +77,7 @@ subplot(3,1,3)
 scatter(diameter,success,'Filled');
 yticks([0 1]);
 yticklabels({'Failure','Success'}) % Label Succes and Failure
-xlim([14.9 19.1]); % expand axis for visual benefit
+xlim([13.9 19.1]); % expand axis for visual benefit
 ylim([-0.1 1.1]); % expand axis for visual benefit
 xlabel('Parachute Diameter (m)');
 ylabel('Landing Success');
