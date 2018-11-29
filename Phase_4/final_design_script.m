@@ -1,2 +1,3 @@
 % Create a struct using the struct given
-final_design = edl_system;
+
+save('final_design.mat','edl_system');
